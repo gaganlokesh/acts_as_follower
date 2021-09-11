@@ -1,5 +1,4 @@
-class Follow < ActiveRecord::Base
-
+class Follow < ApplicationRecord
   extend ActsAsFollower::FollowerLib
   extend ActsAsFollower::FollowScopes
 
@@ -8,7 +7,6 @@ class Follow < ActiveRecord::Base
   belongs_to :follower,   polymorphic: true
 
   def block!
-    self.update_attribute(:blocked, true)
+    update!(blocked: true)
   end
-
 end
